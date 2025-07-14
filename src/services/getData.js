@@ -48,3 +48,35 @@ export async function getMoviesById(movieId) {
   const { data } = await api.get(`/movie/${movieId}`);
   return data;
 }
+// chamadas apis series
+// Pega vídeos da série (data.results)
+export async function getSeriesVideos(seriesId) {
+  const {
+    data: { results },
+  } = await api.get(`/tv/${seriesId}/videos`);
+  return results;
+}
+
+// Pega créditos principais da série (data)
+export async function getSeriesCredits(seriesId) {
+  const { data } = await api.get(`/tv/${seriesId}/credits`);
+  return data;
+}
+
+// Pega séries similares (data)
+export async function getSeriesSimilar(seriesId) {
+  const { data } = await api.get(`/tv/${seriesId}/similar`);
+  return data;
+}
+
+// Pega créditos agregados da série (data)
+export async function getSeriesCreditosPrin(seriesId) {
+  const { data } = await api.get(`/tv/${seriesId}/aggregate_credits`);
+  return data;
+}
+
+// Pega detalhes da série (data)
+export async function getSeriesDetalhes(seriesId) {
+  const { data } = await api.get(`/tv/${seriesId}`);
+  return data;
+}

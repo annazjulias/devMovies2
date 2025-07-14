@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 export const Links = styled(Link)`
   img {
-    width: 30%;
+    width: 40%;
     margin: 3px 0 0 15px;
   }
 `;

@@ -3,7 +3,7 @@ import { Container } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
 
-function Slider({ info, title, type = "movie" }) {
+function SliderSeries({ info, title }) {
   const navigate = useNavigate();
 
   const handleClick = (id) => {
@@ -11,7 +11,7 @@ function Slider({ info, title, type = "movie" }) {
       top: 0,
       behavior: "smooth",
     });
-    navigate(`/detalhe/${type}/${id}`);
+    navigate(`/detalhe/tv/${id}`);
   };
 
   return (
@@ -38,4 +38,4 @@ function Slider({ info, title, type = "movie" }) {
   );
 }
 
-export default Slider;
+export default SliderSeries;

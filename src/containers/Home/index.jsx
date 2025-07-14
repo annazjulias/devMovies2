@@ -12,6 +12,7 @@ import Button from "../../components/Button";
 import Slider from "../../components/slider";
 import { getImages } from "../../utils/get_images";
 import Modal from "../../components/Modal";
+import SliderSeries from "../../components/sliderSerie";
 
 import {
   getPopularMovies,
@@ -109,9 +110,11 @@ function Home() {
         <Slider info={popularFilmes} title="Filmes Populares" />
       )}
       {topMovies.length > 0 && <Slider info={topMovies} title="Top Filmes" />}
-      {topSeries.length > 0 && <Slider info={topSeries} title="Top Séries" />}
+      {topSeries.length > 0 && (
+        <SliderSeries info={topSeries} title="Top Séries" />
+      )}
       {popularSeries.length > 0 && (
-        <Slider info={popularSeries} title="Séries Populares" />
+        <SliderSeries info={popularSeries} title="Séries Populares" />
       )}
       {popularPessoas.length > 0 && (
         <Slider info={popularPessoas} title="Top Artistas" />
