@@ -80,3 +80,25 @@ export async function getSeriesDetalhes(seriesId) {
   const { data } = await api.get(`/tv/${seriesId}`);
   return data;
 }
+// apis pessoas
+
+export async function getPersonById(id) {
+  const { data } = await api.get(`/person/${id}`);
+  return data;
+}
+
+export async function getPersonCredits(id) {
+  const { data } = await api.get(`/person/${id}/combined_credits`);
+
+  return data;
+}
+
+export async function getPersonImages(id) {
+  const { data } = await api.get(`/person/${id}/images`);
+  return data;
+}
+
+export async function getPersonSocial(id) {
+  const { data } = await api.get(`/person/${id}/external_ids`);
+  return data;
+}

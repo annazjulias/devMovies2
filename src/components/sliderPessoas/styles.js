@@ -25,7 +25,6 @@ export const Container = styled.div`
       width: 60px;
       height: 4px;
       border-radius: 2px;
-      /* background-color: #e50914; opcional: adicionar cor à linha decorativa */
     }
   }
 

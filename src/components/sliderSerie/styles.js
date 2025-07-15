@@ -4,9 +4,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   padding: 0 20px 40px;
-  background-color: #0d0d0d;
-  box-shadow: inset 0 0 50px #000000bb;
+  background-color: #000;
+  box-shadow: inset 0 0 50px #000;
   user-select: none;
+  overflow: hidden;
 
   h2 {
     color: #fff;
@@ -24,7 +25,6 @@ export const Container = styled.div`
       bottom: 0;
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, #f39c12, #e74c3c);
       border-radius: 2px;
     }
   }
@@ -51,7 +51,6 @@ export const Container = styled.div`
     &:hover,
     &:focus-visible {
       transform: scale(1.05);
-      box-shadow: 0 12px 20px rgba(255, 156, 0, 0.5);
       outline: none;
     }
   }

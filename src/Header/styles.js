@@ -33,6 +33,9 @@ export const Li = styled.li`
   cursor: pointer;
   font-size: 32px;
   position: relative;
+  img {
+    width: 50px;
+  }
 
   a {
     text-decoration: none;

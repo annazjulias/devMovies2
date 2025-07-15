@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Background, Container, Cover, Info } from "./styled";
+import { Background, Container, Cover, Info, ExtraInfo } from "./styled";
 import { getImages } from "../../utils/get_images";
 import SpanGenres from "../../components/SpanGenres";
 import Credits from "../../components/Credits";
@@ -30,10 +30,6 @@ function DetailSeries() {
           getSeriesCreditosPrin(id),
           getSeriesSimilar(id),
         ]);
-        console.log("Detalhes da série:", detalhes);
-        console.log("Vídeos da série:", videos);
-        console.log("Elenco da série:", creditosPrin);
-        console.log("Séries similares:", similares);
 
         setSerie(detalhes);
         setSerieVideos(videos);
@@ -63,6 +59,34 @@ function DetailSeries() {
           <Credits credits={serieCredits} />
         </Info>
       </Container>
+      <ExtraInfo>
+        <h3>Informações da Série</h3>
+
+        <div className="info-item">
+          <span className="label">Data de Estreia</span>
+          <span className="value">{serie.first_air_date}</span>
+        </div>
+
+        <div className="info-item">
+          <span className="label">Status</span>
+          <span className="value">{serie.status}</span>
+        </div>
+
+        <div className="info-item">
+          <span className="label">Temporadas</span>
+          <span className="value">{serie.number_of_seasons}</span>
+        </div>
+
+        <div className="info-item">
+          <span className="label">Episódios</span>
+          <span className="value">{serie.number_of_episodes}</span>
+        </div>
+
+        <div className="info-item">
+          <span className="label">Idioma Original</span>
+          <span className="value">{serie.original_language.toUpperCase()}</span>
+        </div>
+      </ExtraInfo>
 
       <ContainerMovies>
         {serieVideos.slice(0, 5).map((video) => (

@@ -3,7 +3,7 @@ import { Container } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
 
-function Slider({ info, title, type = "movie" }) {
+function Slider({ info = [], title = "" }) {
   const navigate = useNavigate();
 
   const handleClick = (id) => {
@@ -11,28 +11,37 @@ function Slider({ info, title, type = "movie" }) {
       top: 0,
       behavior: "smooth",
     });
-    navigate(`/detalhe/${type}/${id}`);
+    // Certifique-se que a rota existe no Router.js: /detalhe/movie/:id
+    navigate(`/detalhe/movie/${id}`);
   };
 
   return (
     <Container>
       <h2>{title}</h2>
       <Swiper
-        grabCursor
+        grabCursor={true}
         spaceBetween={10}
         slidesPerView={"auto"}
         className="swiper"
       >
-        {info.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div
-              onClick={() => handleClick(item.id)}
-              style={{ cursor: "pointer" }}
-            >
-              <Card item={item} />
-            </div>
-          </SwiperSlide>
-        ))}
+        {Array.isArray(info) &&
+          info.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div
+                className="card-wrapper"
+                onClick={() => handleClick(item.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleClick(item.id);
+                  }
+                }}
+              >
+                <Card item={item} />
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
     </Container>
   );

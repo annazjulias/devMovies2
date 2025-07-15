@@ -15,6 +15,7 @@ export const Conteiner = styled.div`
 
   img {
     height: 300px;
+    cursor: pointer;
   }
 `;
 export const Title = styled.h4`

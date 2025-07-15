@@ -21,6 +21,7 @@ import {
   getPopularSeries,
   getPopularPeople,
 } from "../../services/getData";
+import SliderPeople from "../../components/sliderPessoas";
 
 function Home() {
   const navigate = useNavigate();
@@ -117,7 +118,7 @@ function Home() {
         <SliderSeries info={popularSeries} title="Séries Populares" />
       )}
       {popularPessoas.length > 0 && (
-        <Slider info={popularPessoas} title="Top Artistas" />
+        <SliderPeople info={popularPessoas} title="Top Artistas" />
       )}
     </>
   );
