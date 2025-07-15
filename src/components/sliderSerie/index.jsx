@@ -1,3 +1,4 @@
+// SliderSeries.jsx
 import Card from "../card";
 import { Container } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,15 +20,21 @@ function SliderSeries({ info, title }) {
       <h2>{title}</h2>
       <Swiper
         grabCursor
-        spaceBetween={10}
+        spaceBetween={16}
         slidesPerView={"auto"}
         className="swiper"
       >
-        {info.map((item, index) => (
-          <SwiperSlide key={index}>
+        {info.map((item) => (
+          <SwiperSlide key={item.id}>
             <div
+              className="card-wrapper"
               onClick={() => handleClick(item.id)}
-              style={{ cursor: "pointer" }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleClick(item.id);
+              }}
+              aria-label={`Detalhes da série ${item.name || item.title}`}
             >
               <Card item={item} />
             </div>
