@@ -6,7 +6,7 @@ function Card({ item }) {
   const navigate = useNavigate();
 
   return (
-    <Conteiner>
+    <Conteiner className="card4">
       <img
         onClick={() => navigate(`detalhe/${item.id}`)}
         src={getImages(item.poster_path || item.profile_path || "")}

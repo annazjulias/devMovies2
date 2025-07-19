@@ -58,9 +58,7 @@ function Home() {
         setTopSeries(topSeriesData);
         setPopularSeries(popularSeriesData);
         setPopularPessoas(popularPessoasData);
-      } catch (error) {
-        console.error("Erro ao buscar dados", error);
-      }
+      } catch (error) {}
     }
 
     getAllData();

@@ -102,3 +102,35 @@ export async function getPersonSocial(id) {
   const { data } = await api.get(`/person/${id}/external_ids`);
   return data;
 }
+
+// Busca uma página específica de um gênero
+export async function getMoviesByGenre(genre_id, page = 1) {
+  const { data } = await api.get("/discover/movie", {
+    params: {
+      with_genres: genre_id,
+      page,
+      sort_by: "popularity.desc",
+    },
+  });
+
+  return data; // retorna objeto com "results", "total_pages" etc.
+}
+
+// Busca várias páginas de um gênero (até maxPages)
+// Busca todos os filmes, independente de gênero
+export async function getAllMovies(maxPages = 2) {
+  const allMovies = [];
+
+  for (let page = 1; page <= maxPages; page++) {
+    const { data } = await api.get(`/discover/movie`, {
+      params: {
+        page,
+        sort_by: "popularity.desc", // ou outro critério, como "release_date.desc"
+      },
+    });
+
+    allMovies.push(...data.results);
+  }
+
+  return allMovies;
+}

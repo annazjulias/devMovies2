@@ -35,9 +35,7 @@ function DetailSeries() {
         setSerieVideos(videos);
         setSerieCredits(creditosPrin);
         setSerieSimilar(similares?.results || []);
-      } catch (error) {
-        console.error("Erro ao carregar dados da série:", error);
-      }
+      } catch (error) {}
     }
 
     fetchSeriesData();

@@ -50,7 +50,9 @@ function Detail() {
             <Info>
               <h2>{movie?.title}</h2>
               <SpanGenres genres={movie.genres} />
+
               <p>{movie.overview}</p>
+              <h5>Lançamento: {movie.release_date}</h5>
               <Credits credits={movieCredits} />
             </Info>
           </Container>

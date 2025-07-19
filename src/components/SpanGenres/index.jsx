@@ -1,4 +1,5 @@
 import { Container } from "./styled";
+
 function SpanGenres({ genres }) {
   return (
     <Container>

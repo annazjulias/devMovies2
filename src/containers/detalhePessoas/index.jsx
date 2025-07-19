@@ -39,9 +39,7 @@ function DetailArtist() {
         setPerson(personData);
         setCredits(personCredits.cast || []);
         setImages(personImages.profiles || []);
-      } catch (error) {
-        console.error("Erro ao carregar dados do artista:", error);
-      }
+      } catch (error) {}
     }
 
     fetchData();
