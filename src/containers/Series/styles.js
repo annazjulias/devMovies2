@@ -11,7 +11,7 @@ export const Containers = styled.div`
   }
 `;
 
-export const GridFilmesi = styled.div`
+export const GridSeries = styled.div`
   justify-items: center;
   overflow-x: hidden;
 

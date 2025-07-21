@@ -1,46 +1,82 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getAllSeries } from "../../services/getData";
+import { useParams, useNavigate } from "react-router-dom";
+import { getMoviesByGenre } from "../../services/getData";
 import Card from "../../components/card";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import {
   Containers,
-  GridSeries,
+  GridFilmesi,
   PageButton,
   PaginationScroll,
   ArrowButton,
 } from "./styles";
-import GenresButtonsSeries from "../GenresButtons";
+import GenresButtons from "../GenresButtons";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
-function SeriesPage() {
+function MoviesByGenre() {
+  const genresList = [
+    { id: 28, name: "Ação" },
+    { id: 12, name: "Aventura" },
+    { id: 16, name: "Animação" },
+    { id: 35, name: "Comédia" },
+    { id: 80, name: "Crime" },
+    { id: 99, name: "Documentário" },
+    { id: 18, name: "Drama" },
+    { id: 10751, name: "Família" },
+    { id: 14, name: "Fantasia" },
+    { id: 36, name: "História" },
+    { id: 27, name: "Terror" },
+    { id: 10402, name: "Música" },
+    { id: 9648, name: "Mistério" },
+    { id: 10749, name: "Romance" },
+    { id: 878, name: "Ficção Científica" },
+    { id: 10770, name: "Cinema TV" },
+    { id: 53, name: "Thriller" },
+    { id: 10752, name: "Guerra" },
+    { id: 37, name: "Faroeste" },
+  ];
+
+  const { genreId } = useParams();
   const navigate = useNavigate();
-  const [series, setSeries] = useState([]);
+
+  const [movies, setMovies] = useState([]);
+  const [genreName, setGenreName] = useState("");
+
   const [currentPage, setCurrentPage] = useState(1);
   const [pageGroupStart, setPageGroupStart] = useState(1);
 
-  const totalPages = 250;
+  const totalPages = 50; // ajuste conforme a API
   const pagesPerGroup = 5;
 
+  // Resetar paginação quando trocar de gênero
   useEffect(() => {
-    async function fetchData() {
+    setCurrentPage(1);
+    setPageGroupStart(1);
+  }, [genreId]);
+
+  useEffect(() => {
+    async function fetchGenreMovies() {
       try {
-        const data = await getAllSeries(currentPage);
-        setSeries(data);
+        const data = await getMoviesByGenre(genreId, currentPage);
+        setMovies(data.results);
+
+        const genreFound = genresList.find((g) => String(g.id) === genreId);
+        setGenreName(genreFound?.name || "Filmes");
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } catch (error) {
-        console.error("Erro ao buscar séries:", error);
+        console.error("Erro ao buscar filmes por gênero:", error);
       }
     }
 
-    fetchData();
-  }, [currentPage]);
+    fetchGenreMovies();
+  }, [genreId, currentPage]);
+
   const handleClick = (id) => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    navigate(`/detalhe/tv/${id}`);
+    navigate(`/detalhe/movie/${id}`);
   };
 
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handlePrevGroup = () => {
@@ -55,6 +91,7 @@ function SeriesPage() {
     );
     setPageGroupStart(newStart);
   };
+
   const visiblePages = Array.from(
     { length: Math.min(pagesPerGroup, totalPages - pageGroupStart + 1) },
     (_, i) => pageGroupStart + i
@@ -62,13 +99,14 @@ function SeriesPage() {
 
   return (
     <Containers>
-      <h2>Catálogo de Series</h2>
-      <GenresButtonsSeries />
+      <h2>{genreName}</h2>
 
-      <GridSeries>
+      <GenresButtons />
+
+      <GridFilmesi>
         <section>
-          {Array.isArray(series) && series.length > 0 ? (
-            series.map((item) => (
+          {Array.isArray(movies) && movies.length > 0 ? (
+            movies.map((item) => (
               <div
                 key={item.id}
                 className="card"
@@ -85,10 +123,10 @@ function SeriesPage() {
               </div>
             ))
           ) : (
-            <p>Carregando series...</p>
+            <p>Carregando filmes...</p>
           )}
         </section>
-      </GridSeries>
+      </GridFilmesi>
 
       <PaginationScroll>
         <ArrowButton onClick={handlePrevGroup} disabled={pageGroupStart === 1}>
@@ -116,4 +154,4 @@ function SeriesPage() {
   );
 }
 
-export default SeriesPage;
+export default MoviesByGenre;

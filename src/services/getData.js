@@ -103,34 +103,125 @@ export async function getPersonSocial(id) {
   return data;
 }
 
-// Busca uma página específica de um gênero
-export async function getMoviesByGenre(genre_id, page = 1) {
-  const { data } = await api.get("/discover/movie", {
-    params: {
-      with_genres: genre_id,
-      page,
-      sort_by: "popularity.desc",
-    },
-  });
+export async function getAllMovies(page = 1) {
+  const apiPage1 = (page - 1) * 2 + 1;
+  const apiPage2 = apiPage1 + 1;
 
-  return data; // retorna objeto com "results", "total_pages" etc.
-}
+  try {
+    const [res1, res2] = await Promise.all([
+      api.get("/discover/movie", {
+        params: {
+          page: apiPage1,
+          language: "pt-BR",
+          include_adult: false,
+        },
+      }),
+      api.get("/discover/movie", {
+        params: {
+          page: apiPage2,
+          language: "pt-BR",
+          include_adult: false,
+        },
+      }),
+    ]);
 
-// Busca várias páginas de um gênero (até maxPages)
-// Busca todos os filmes, independente de gênero
-export async function getAllMovies(maxPages = 2) {
-  const allMovies = [];
-
-  for (let page = 1; page <= maxPages; page++) {
-    const { data } = await api.get(`/discover/movie`, {
-      params: {
-        page,
-        sort_by: "popularity.desc", // ou outro critério, como "release_date.desc"
-      },
-    });
-
-    allMovies.push(...data.results);
+    const movies = [...res1.data.results, ...res2.data.results]; // 40 filmes
+    return movies;
+  } catch (error) {
+    console.error("Erro ao buscar filmes da API:", error);
+    return [];
   }
+}
+export async function getMoviesByGenre(genreId, page = 1) {
+  const apiPage1 = (page - 1) * 2 + 1;
+  const apiPage2 = apiPage1 + 1;
 
-  return allMovies;
+  try {
+    const [res1, res2] = await Promise.all([
+      api.get("/discover/movie", {
+        params: {
+          with_genres: genreId,
+          language: "pt-BR",
+          include_adult: false,
+          page: apiPage1,
+        },
+      }),
+      api.get("/discover/movie", {
+        params: {
+          with_genres: genreId,
+          language: "pt-BR",
+          include_adult: false,
+          page: apiPage2,
+        },
+      }),
+    ]);
+
+    return {
+      results: [...res1.data.results, ...res2.data.results],
+    };
+  } catch (error) {
+    console.error("Erro ao buscar filmes por gênero:", error);
+    return { results: [] };
+  }
+}
+export async function getSeriesByGenre(genreId, page = 1) {
+  const apiPage1 = (page - 1) * 2 + 1;
+  const apiPage2 = apiPage1 + 1;
+
+  try {
+    const [res1, res2] = await Promise.all([
+      api.get("/discover/tv", {
+        params: {
+          with_genres: genreId,
+          language: "pt-BR",
+          include_adult: false,
+          page: apiPage1,
+        },
+      }),
+      api.get("/discover/tv", {
+        params: {
+          with_genres: genreId,
+          language: "pt-BR",
+          include_adult: false,
+          page: apiPage2,
+        },
+      }),
+    ]);
+
+    return {
+      results: [...res1.data.results, ...res2.data.results],
+    };
+  } catch (error) {
+    console.error("Erro ao buscar séries por gênero:", error);
+    return { results: [] };
+  }
+}
+export async function getAllSeries(page = 1) {
+  const apiPage1 = (page - 1) * 2 + 1;
+  const apiPage2 = apiPage1 + 1;
+
+  try {
+    const [res1, res2] = await Promise.all([
+      api.get("/discover/tv", {
+        params: {
+          page: apiPage1,
+          language: "pt-BR",
+          include_adult: false,
+        },
+      }),
+      api.get("/discover/tv", {
+        params: {
+          page: apiPage2,
+          language: "pt-BR",
+          include_adult: false,
+        },
+      }),
+    ]);
+
+    const series = [...res1.data.results, ...res2.data.results]; // cerca de 40 séries
+    return series;
+  } catch (error) {
+    console.error("Erro ao buscar séries da API:", error);
+    return [];
+  }
 }
