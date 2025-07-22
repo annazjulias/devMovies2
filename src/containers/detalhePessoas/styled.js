@@ -83,7 +83,7 @@ export const MoviesSection = styled.div`
 export const SectionTitle = styled.h3`
   font-size: 1.9rem;
   margin-bottom: 15px;
-  border-bottom: 2px solid #fff;
+
   padding-bottom: 6px;
 `;
 

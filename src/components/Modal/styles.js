@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Background = styled.div`
   height: 100vh;
+  overflow: hidden;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;

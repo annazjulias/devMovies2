@@ -17,5 +17,6 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    width: 100%;
   }
 `;

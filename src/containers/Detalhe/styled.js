@@ -27,9 +27,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 100%;
+
   margin-top: -100px;
   max-width: 1500px;
+  overflow: hidden;
+  width: 100%;
 `;
 export const Background = styled.div`
   background-image: url(${(props) => props.image});
