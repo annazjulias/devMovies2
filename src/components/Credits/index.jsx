@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function Credits({ credits }) {
   if (!credits) return null;
 
-  // Se for um array (ex: créditos de filme)
   const creditsArray = Array.isArray(credits) ? credits : credits.cast;
 
   if (!creditsArray || creditsArray.length === 0) return null;
@@ -27,7 +26,7 @@ function Credits({ credits }) {
             <img
               src={getImages(artist.profile_path)}
               alt={artist.original_name}
-              onClick={() => handleClick(artist.id)} // CORRETO
+              onClick={() => handleClick(artist.id)}
             />
             <p>{artist.original_name || artist.name}</p>
           </div>

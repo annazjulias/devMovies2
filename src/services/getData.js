@@ -113,14 +113,12 @@ export async function getAllMovies(page = 1) {
         params: {
           page: apiPage1,
           language: "pt-BR",
-          include_adult: false,
         },
       }),
       api.get("/discover/movie", {
         params: {
           page: apiPage2,
           language: "pt-BR",
-          include_adult: false,
         },
       }),
     ]);
@@ -142,7 +140,7 @@ export async function getMoviesByGenre(genreId, page = 1) {
         params: {
           with_genres: genreId,
           language: "pt-BR",
-          include_adult: false,
+
           page: apiPage1,
         },
       }),
@@ -150,7 +148,7 @@ export async function getMoviesByGenre(genreId, page = 1) {
         params: {
           with_genres: genreId,
           language: "pt-BR",
-          include_adult: false,
+
           page: apiPage2,
         },
       }),
@@ -174,7 +172,7 @@ export async function getSeriesByGenre(genreId, page = 1) {
         params: {
           with_genres: genreId,
           language: "pt-BR",
-          include_adult: false,
+
           page: apiPage1,
         },
       }),
@@ -182,7 +180,7 @@ export async function getSeriesByGenre(genreId, page = 1) {
         params: {
           with_genres: genreId,
           language: "pt-BR",
-          include_adult: false,
+
           page: apiPage2,
         },
       }),
@@ -206,14 +204,12 @@ export async function getAllSeries(page = 1) {
         params: {
           page: apiPage1,
           language: "pt-BR",
-          include_adult: false,
         },
       }),
       api.get("/discover/tv", {
         params: {
           page: apiPage2,
           language: "pt-BR",
-          include_adult: false,
         },
       }),
     ]);
@@ -223,5 +219,21 @@ export async function getAllSeries(page = 1) {
   } catch (error) {
     console.error("Erro ao buscar séries da API:", error);
     return [];
+  }
+}
+
+export async function searchMulti(query) {
+  try {
+    const response = await api.get("/search/multi", {
+      params: {
+        query,
+        language: "pt-BR",
+      },
+    });
+
+    return response.data.results;
+  } catch (error) {
+    console.error("Erro na busca multi:", error);
+    return []; // retorna array vazio em caso de erro
   }
 }

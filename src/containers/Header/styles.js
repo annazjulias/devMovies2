@@ -10,15 +10,15 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
+  padding: 0;
   background-color: ${(props) =>
     props.$changeBackground ? "#000" : "transparent"};
   transition: background-color 0.9s ease-in-out;
 `;
 export const Links = styled(Link)`
   img {
-    width: 30%;
-    margin: 0 0 0 15px;
+    width: 250px;
+    margin: 0px 0 0 15px;
   }
 `;
 export const Menu = styled.ul`
@@ -26,6 +26,9 @@ export const Menu = styled.ul`
   list-style: none;
   gap: 50px;
   margin-right: 37px;
+  .lupa {
+    width: 65px;
+  }
 `;
 
 export const Li = styled.li`
@@ -48,7 +51,7 @@ export const Li = styled.li`
     width: ${(props) => (props.$isActive ? "100%" : 0)};
     background-color: #ff0000;
     position: absolute;
-    bottom: -10px;
+    bottom: 15px;
     left: 50%;
     transform: translate(-50%);
     transition: width 0.5s ease-in-out;

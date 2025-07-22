@@ -11,7 +11,6 @@ function Slider({ info = [], title = "" }) {
       top: 0,
       behavior: "smooth",
     });
-    // Certifique-se que a rota existe no Router.js: /detalhe/movie/:id
     navigate(`/detalhe/movie/${id}`);
   };
 

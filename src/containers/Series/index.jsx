@@ -10,7 +10,7 @@ import {
   PaginationScroll,
   ArrowButton,
 } from "./styles";
-import GenresButtonsSeries from "../GenresButtons";
+import GenresButtonsSeries from "../ButonSeriesNovo";
 
 function SeriesPage() {
   const navigate = useNavigate();

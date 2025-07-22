@@ -17,7 +17,7 @@ export const tvGenres = [
   { id: 10766, name: "Novela" },
   { id: 10767, name: "Talk Show" },
   { id: 10768, name: "Guerra e Política" },
-  { id: 37, name: "Faroeste" },
+  { id: 37, name: "Faroestes" },
 ];
 
 export default function GenresButtonsSeries() {
@@ -25,7 +25,7 @@ export default function GenresButtonsSeries() {
 
   return (
     <GenresContainer>
-      {genresList.map((genre) => (
+      {tvGenres.map((genre) => (
         <GenreButton key={genre.id} onClick={() => navigate(`/tv/${genre.id}`)}>
           {genre.name}
         </GenreButton>

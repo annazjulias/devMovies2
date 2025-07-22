@@ -9,6 +9,7 @@ import Pesquisa from "../containers/pesquisa";
 import Artistas from "../containers/detalhePessoas";
 import MoviesCatalog from "../containers/Movies";
 import MoviesByGenre from "../containers/generos";
+import SeriesByGenre from "../containers/generosSeries";
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
         <Route path="/detalhe/tv/:id" element={<DetailSeries />} />
         <Route path="/pesquisa" element={<Pesquisa />} />
         <Route path="detalhe/person/:id" element={<Artistas />} />
+        <Route path="/tv/:genreIds" element={<SeriesByGenre />} />
       </Route>
     </Routes>
   );

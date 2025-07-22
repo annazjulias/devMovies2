@@ -4,7 +4,7 @@ import { getSeriesByGenre } from "../../services/getData";
 import Card from "../../components/card";
 import {
   Containers,
-  GridFilmesi,
+  GridSeries,
   PageButton,
   PaginationScroll,
   ArrowButton,
@@ -14,28 +14,24 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 function SeriesByGenre() {
   const tvGenres = [
-    { id: 28, name: "Ação" },
-    { id: 12, name: "Aventura" },
+    { id: 10759, name: "Ação e Aventura" },
     { id: 16, name: "Animação" },
     { id: 35, name: "Comédia" },
     { id: 80, name: "Crime" },
     { id: 99, name: "Documentário" },
     { id: 18, name: "Drama" },
     { id: 10751, name: "Família" },
-    { id: 14, name: "Fantasia" },
-    { id: 36, name: "História" },
-    { id: 27, name: "Terror" },
-    { id: 10402, name: "Música" },
+    { id: 10762, name: "Kids" },
     { id: 9648, name: "Mistério" },
-    { id: 10749, name: "Romance" },
-    { id: 878, name: "Ficção Científica" },
-    { id: 10770, name: "Cinema TV" },
-    { id: 53, name: "Thriller" },
-    { id: 10752, name: "Guerra" },
+    { id: 10763, name: "Notícias" },
+    { id: 10764, name: "Reality" },
+    { id: 10765, name: "Ficção Científica e Fantasia" },
+    { id: 10766, name: "Novela" },
+    { id: 10767, name: "Talk Show" },
+    { id: 10768, name: "Guerra e Política" },
     { id: 37, name: "Faroeste" },
   ];
-
-  const { genreId } = useParams();
+  const { genreIds } = useParams();
   const navigate = useNavigate();
 
   const [series, setSeries] = useState([]);
@@ -51,15 +47,15 @@ function SeriesByGenre() {
   useEffect(() => {
     setCurrentPage(1);
     setPageGroupStart(1);
-  }, [genreId]);
+  }, [genreIds]);
 
   useEffect(() => {
     async function fetchGenreseries() {
       try {
-        const data = await getSeriesByGenre(genreId, currentPage);
+        const data = await getSeriesByGenre(genreIds, currentPage);
         setSeries(data.results);
 
-        const genreFound = tvGenres.find((g) => String(g.id) === genreId);
+        const genreFound = tvGenres.find((g) => String(g.id) === genreIds);
         setGenreName(genreFound?.name || "Series");
 
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -69,7 +65,7 @@ function SeriesByGenre() {
     }
 
     fetchGenreseries();
-  }, [genreId, currentPage]);
+  }, [genreIds, currentPage]);
 
   const handleClick = (id) => {
     navigate(`/detalhe/tv/${id}`);
@@ -103,7 +99,7 @@ function SeriesByGenre() {
 
       <GenresButtonsSeries />
 
-      <GridFilmesi>
+      <GridSeries>
         <section>
           {Array.isArray(series) && series.length > 0 ? (
             series.map((item) => (
@@ -126,7 +122,7 @@ function SeriesByGenre() {
             <p>Carregando filmes...</p>
           )}
         </section>
-      </GridFilmesi>
+      </GridSeries>
 
       <PaginationScroll>
         <ArrowButton onClick={handlePrevGroup} disabled={pageGroupStart === 1}>

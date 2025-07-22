@@ -1,12 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import { Container, Menu, Li, Links } from "./styles";
 import Logo from "../../assets/dev.png";
+import Lupa from "../../assets/lupa.png";
 import { useState, useEffect } from "react";
+
+import SearchBar from "../../components/SearchBar";
 
 function Header() {
   const [changeBackground, setChangeBackground] = useState(false);
   const { pathname } = useLocation();
-
+  const [showSearch, setShowSearch] = useState(false);
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+  };
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 160) {
@@ -41,6 +47,14 @@ function Header() {
             Filmes
           </Link>
         </Li>
+        {showSearch && <SearchBar />}
+        <img
+          className="lupa"
+          src={Lupa}
+          alt="Pesquisar"
+          onClick={toggleSearch}
+          style={{ cursor: "pointer" }}
+        />
       </Menu>
     </Container>
   );

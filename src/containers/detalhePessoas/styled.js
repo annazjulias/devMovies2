@@ -74,7 +74,7 @@ export const ArtistDetails = styled.div`
 `;
 
 export const MoviesSection = styled.div`
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 10px 20px 40px;
   color: #fff;
