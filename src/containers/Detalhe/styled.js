@@ -30,7 +30,7 @@ export const Container = styled.div`
 
   margin-top: -100px;
   max-width: 1500px;
-  overflow: hidden;
+
   width: 100%;
 `;
 export const Background = styled.div`

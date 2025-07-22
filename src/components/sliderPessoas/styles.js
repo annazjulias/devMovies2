@@ -7,7 +7,6 @@ export const Container = styled.div`
   background-color: #000;
   box-shadow: inset 0 0 50px #000;
   user-select: none;
-  overflow: hidden;
 
   h2 {
     color: #fff;
