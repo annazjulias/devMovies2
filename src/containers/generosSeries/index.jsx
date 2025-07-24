@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getSeriesByGenre } from "../../services/getData";
-import Card from "../../components/Card";
+import Card from "../../components/card";
 import {
   Containers,
   GridSeries,

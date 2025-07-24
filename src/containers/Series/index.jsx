@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllSeries } from "../../services/getData";
-import Card from "../../components/Card";
+import Card from "../../components/card";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import {
   Containers,

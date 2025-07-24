@@ -9,7 +9,7 @@ import {
   ArrowButton,
 } from "./styles";
 import GenresButtons from "../GenresButtons";
-import Card from "../../components/Card";
+import Card from "../../components/card";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
 function MoviesCatalog() {
