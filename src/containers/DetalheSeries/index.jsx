@@ -59,30 +59,29 @@ function DetailSeries() {
       </Container>
       <ExtraInfo>
         <h3>Informações da Série</h3>
-
-        <div className="info-item">
-          <span className="label">Data de Estreia</span>
-          <span className="value">{serie.first_air_date}</span>
-        </div>
-
-        <div className="info-item">
-          <span className="label">Status</span>
-          <span className="value">{serie.status}</span>
-        </div>
-
-        <div className="info-item">
-          <span className="label">Temporadas</span>
-          <span className="value">{serie.number_of_seasons}</span>
-        </div>
-
-        <div className="info-item">
-          <span className="label">Episódios</span>
-          <span className="value">{serie.number_of_episodes}</span>
-        </div>
-
-        <div className="info-item">
-          <span className="label">Idioma Original</span>
-          <span className="value">{serie.original_language.toUpperCase()}</span>
+        <div className="info-grid">
+          <div className="info-box">
+            <span className="label">📅 Estreia</span>
+            <span className="value">{serie.first_air_date}</span>
+          </div>
+          <div className="info-box">
+            <span className="label">🎬 Episódios</span>
+            <span className="value">{serie.number_of_episodes}</span>
+          </div>
+          <div className="info-box">
+            <span className="label">📺 Status</span>
+            <span className="value">{serie.status}</span>
+          </div>
+          <div className="info-box">
+            <span className="label">🗓️ Temporadas</span>
+            <span className="value">{serie.number_of_seasons}</span>
+          </div>
+          <div className="info-box">
+            <span className="label">🌎 Idioma Original</span>
+            <span className="value">
+              {serie.original_language.toUpperCase()}
+            </span>
+          </div>
         </div>
       </ExtraInfo>
 

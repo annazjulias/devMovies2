@@ -1,5 +1,5 @@
 // SliderSeries.jsx
-import Card from "../card";
+import Card from "../Card";
 import { Container } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate } from "react-router-dom";
