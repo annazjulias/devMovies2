@@ -12,6 +12,7 @@ import SpanGenres from "../../components/SpanGenres";
 import Credits from "../../components/Credits";
 import { ContainerMovies } from "../../components/Credits/styles";
 import Slider from "../../components/slider";
+import AssistirAgoraButton from "../../components/AssistirAgora";
 
 function Detail() {
   const { id } = useParams();
@@ -56,6 +57,7 @@ function Detail() {
               <Credits credits={movieCredits} />
             </Info>
           </Container>
+          <AssistirAgoraButton movie={movie} />
           <ContainerMovies>
             {movieVideos &&
               movieVideos.slice(0, 5).map((videos) => (
