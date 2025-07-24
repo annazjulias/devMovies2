@@ -222,18 +222,19 @@ export async function getAllSeries(page = 1) {
   }
 }
 
-export async function searchMulti(query) {
+export async function searchMulti(query, page = 1) {
   try {
     const response = await api.get("/search/multi", {
       params: {
         query,
+        page,
         language: "pt-BR",
       },
     });
 
-    return response.data.results;
+    return response.data;
   } catch (error) {
     console.error("Erro na busca multi:", error);
-    return []; // retorna array vazio em caso de erro
+    return { results: [], total_results: 0 };
   }
 }

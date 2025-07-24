@@ -43,19 +43,17 @@ export const GridSeries = styled.div`
 `;
 
 export const PageButton = styled.button`
-  margin: 0 5px;
-  padding: 8px 14px;
-  background-color: ${(props) => (props.active ? "#ff3c00" : "#eee")};
-  color: ${(props) => (props.active ? "white" : "black")};
+  background-color: ${(props) => (props.active ? "#ff0000" : "#1c1c1c")};
+  color: #fff;
   border: none;
+  padding: 5px 19px;
   border-radius: 6px;
   cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: 0.2s;
+  font-weight: bold;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${(props) => (props.active ? "#e63700" : "#ddd")};
+    background-color: #ff0000;
   }
 `;
 
@@ -82,21 +80,17 @@ export const PaginationScroll = styled.div`
   }
 `;
 export const ArrowButton = styled.button`
-  padding: 8px 12px;
-  background-color: #222;
-  color: white;
+  background: transparent;
   border: none;
-  border-radius: 6px;
   cursor: pointer;
-  flex-shrink: 0;
-
-  &:hover {
-    color: rgb(243, 18, 18);
-    background-color: white;
-  }
+  color: #fff;
 
   &:disabled {
+    opacity: 0.3;
     cursor: not-allowed;
-    opacity: 0.5;
+  }
+
+  &:hover:not(:disabled) {
+    color: #ff0000;
   }
 `;

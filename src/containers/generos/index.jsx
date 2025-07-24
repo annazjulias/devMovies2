@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getMoviesByGenre } from "../../services/getData";
-import Card from "../../components/card";
+import Card from "../../components/Card";
 import {
   Containers,
   GridFilmesi,

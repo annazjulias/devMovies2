@@ -1,18 +1,24 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Container, Menu, Li, Links } from "./styles";
 import Logo from "../../assets/dev.png";
 import Lupa from "../../assets/lupa.png";
 import { useState, useEffect } from "react";
 
-import SearchBar from "../../components/SearchBar";
-
 function Header() {
   const [changeBackground, setChangeBackground] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate(); // redirecionamento
   const [showSearch, setShowSearch] = useState(false);
+
   const toggleSearch = () => {
     setShowSearch(!showSearch);
   };
+
+  // 👉 Função que leva para a página de pesquisa
+  const handleSearchClick = () => {
+    navigate("/search");
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 160) {
@@ -24,7 +30,7 @@ function Header() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []); // vazio para adicionar listener só uma vez
+  }, []);
 
   return (
     <Container $changeBackground={changeBackground}>
@@ -47,12 +53,13 @@ function Header() {
             Filmes
           </Link>
         </Li>
-        {showSearch && <SearchBar />}
+
+        {/* 🔍 Lupa que redireciona para /search */}
         <img
           className="lupa"
           src={Lupa}
           alt="Pesquisar"
-          onClick={toggleSearch}
+          onClick={handleSearchClick}
           style={{ cursor: "pointer" }}
         />
       </Menu>

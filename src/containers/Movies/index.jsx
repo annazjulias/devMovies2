@@ -8,8 +8,8 @@ import {
   PaginationScroll,
   ArrowButton,
 } from "./styles";
-import Card from "../../components/card";
 import GenresButtons from "../GenresButtons";
+import Card from "../../components/Card";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
 function MoviesCatalog() {
