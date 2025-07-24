@@ -2,7 +2,7 @@ import { Container, Title, SearchForm, ResultsGrid, Loading } from "./stylex";
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { searchMulti } from "../../services/getData";
-import Card from "../../components/Card";
+import Card from "../../components/card";
 
 function SearchResults() {
   const [searchParams, setSearchParams] = useSearchParams();
