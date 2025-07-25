@@ -6,17 +6,22 @@ function AssistirAgoraButton({ movie }) {
     if (!movie?.title && !movie?.name) return;
 
     const title = movie.title || movie.name;
+    const year =
+      movie.release_date?.split("-")[0] ||
+      movie.first_air_date?.split("-")[0] ||
+      "";
 
-    // Formata o título para uma URL de busca
     const formattedTitle = title
       .toLowerCase()
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-      .replace(/[^a-z0-9\s]/gi, "") // Remove caracteres especiais
-      .replace(/\s+/g, "+"); // Substitui espaços por "+"
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9\s]/gi, "")
+      .replace(/\s+/g, "+");
 
-    const url = `https://redecanais.gd/search.php?keywords=${formattedTitle}`;
-    window.open(url, "_blank"); // Abre em nova aba
+    const query = `${formattedTitle}+${year}+assistir+dublado+redecanais`;
+
+    const url = `https://www.google.com/search?q=${query}`;
+    window.open(url, "_blank");
   };
 
   return <Button onClick={handleClick}>Assistir Agora</Button>;

@@ -6,6 +6,7 @@ import SpanGenres from "../../components/SpanGenres";
 import Credits from "../../components/Credits";
 import { ContainerMovies } from "../../components/Credits/styles";
 import SliderSeries from "../../components/sliderSerie";
+import AssistirAgoraButton from "../../components/AssistirAgora";
 
 import {
   getSeriesDetalhes,
@@ -84,7 +85,7 @@ function DetailSeries() {
           </div>
         </div>
       </ExtraInfo>
-
+      <AssistirAgoraButton movie={serie} />
       <ContainerMovies>
         {serieVideos.slice(0, 5).map((video) => (
           <div key={video.id}>
