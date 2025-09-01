@@ -8,7 +8,6 @@ export const Conteiner = styled.div`
 
   user-select: none;
   overflow-x: auto; /* permite rolagem horizontal */
-  scroll-snap-type: x mandatory; /* "encaixa" os slides */
   -webkit-overflow-scrolling: touch; /* rolagem suave no mobile */
 
   div {
@@ -32,14 +31,6 @@ export const Conteiner = styled.div`
       transform: scale(1.05);
     }
   }
-
-  @media (max-width: 768px) {
-    justify-content: center;
-
-    img {
-      height: 200px; /* menor no mobile */
-    }
-  }
 `;
 
 export const Title = styled.h4`
@@ -47,10 +38,6 @@ export const Title = styled.h4`
   font-size: 28px;
   font-weight: 400; /* corrigido */
   text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 20px;
-  }
 `;
 
 export const ContainerMovies = styled.div`
@@ -83,22 +70,5 @@ export const ContainerMovies = styled.div`
     min-height: 315px;
     border: none;
     border-radius: 12px;
-  }
-
-  @media (max-width: 768px) {
-    margin-top: 50px;
-
-    div {
-      margin: 20px 0;
-    }
-
-    h4 {
-      font-size: 18px;
-      text-align: center;
-    }
-
-    iframe {
-      min-height: 200px;
-    }
   }
 `;
