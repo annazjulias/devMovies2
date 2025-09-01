@@ -22,13 +22,6 @@ export const Cover = styled.div`
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
     animation: ${scale} 0.5s linear;
   }
-
-  @media (max-width: 768px) {
-    justify-content: center;
-    img {
-      width: 90%; /* Reduz largura em telas menores */
-    }
-  }
 `;
 
 export const Container = styled.div`
@@ -39,12 +32,6 @@ export const Container = styled.div`
   width: 100%;
   margin-top: -100px;
   max-width: 1500px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    margin-top: -50px;
-    align-items: center;
-  }
 `;
 
 export const Background = styled.div`
@@ -94,19 +81,6 @@ export const Info = styled.div`
     margin-top: 20px;
     margin-bottom: 30px;
   }
-
-  @media (max-width: 768px) {
-    width: 90%; /* ocupa quase toda tela no mobile */
-    text-align: center;
-    align-items: center;
-
-    h2 {
-      font-size: 28px;
-    }
-    p {
-      font-size: 16px;
-    }
-  }
 `;
 
 export const ExtraInfo = styled.div`
@@ -115,7 +89,7 @@ export const ExtraInfo = styled.div`
 
   border-radius: 16px;
   color: #fff;
-  width: 1200px;
+  width: 100%;
   margin: 10px auto;
 
   h3 {
