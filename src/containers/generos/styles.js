@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Containers = styled.div`
   background-color: #000;
@@ -7,10 +7,10 @@ export const Containers = styled.div`
     margin-top: 120px;
     margin-bottom: 10px;
     color: rgb(255, 255, 255);
-    font-family: "Original Surfer", sans-serif;
+    font-family: 'Original Surfer', sans-serif;
     font-size: 80px;
     background-color: red;
-    width: 70vh;
+    width: 100%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -65,7 +65,7 @@ export const PaginationScroll = styled.div`
 `;
 
 export const PageButton = styled.button`
-  background-color: ${(props) => (props.active ? "#ff0000" : "#1c1c1c")};
+  background-color: ${(props) => (props.active ? '#ff0000' : '#1c1c1c')};
   color: #fff;
   border: none;
   padding: 5px 19px;
