@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  overflow: hidden;
-  width: 100%;
   padding: 0 20px 40px;
   background-color: #000;
   box-shadow: inset 0 0 50px #000;
@@ -42,7 +40,7 @@ export const Container = styled.div`
   .card-wrapper {
     cursor: pointer;
     border-radius: 8px;
-    overflow: hidden;
+
     transition:
       transform 0.25s ease,
       box-shadow 0.25s ease;
